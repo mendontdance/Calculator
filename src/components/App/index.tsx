@@ -8,8 +8,8 @@ import ProductsList from '../ProductsList';
 import InputText from '../InputText';
 import Button from '../Button';
 import Text from '../Text';
-import './styles.scss';
 import { EButtonAppearance } from '../Button/types';
+import './styles.scss';
 
 const App = observer(() => {
   const classBem = bem('products-container');
