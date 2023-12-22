@@ -18,6 +18,7 @@ const Product: FC<IProductProps> = ({ name, id, price }) => {
 
   const isValid = productPrice && productName && Number(productPrice);
   const priceValid = productPrice === '' || Number(productPrice);
+  const nameValid = productName === '' || productName;
 
   const onClickEdit = () => {
     setIsEdit((prevState) => !prevState);
@@ -64,7 +65,7 @@ const Product: FC<IProductProps> = ({ name, id, price }) => {
             placeholder={'Название товара'}
             onChange={onChangeName}
             textValid="Введите название товара"
-            isValid={!!productName}
+            isValid={!!nameValid}
           />
           <InputText
             value={productPrice}

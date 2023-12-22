@@ -21,6 +21,7 @@ const App = observer(() => {
 
   const isValid = productPrice && productName && Number(productPrice);
   const priceValid = productPrice === '' || Number(productPrice);
+  const nameValid = productName === '' || productName;
 
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     setProductName(e.target.value);
@@ -50,7 +51,7 @@ const App = observer(() => {
           value={productName}
           onChange={onChangeName}
           textValid="Введите название товара"
-          isValid={!!productName}
+          isValid={!!nameValid}
         />
         <InputText
           placeholder={'Цена товара'}
