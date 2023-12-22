@@ -59,7 +59,13 @@ const Product: FC<IProductProps> = ({ name, id, price }) => {
         </>
       ) : (
         <>
-          <InputText value={productName} placeholder={'Название товара'} onChange={onChangeName} />
+          <InputText
+            value={productName}
+            placeholder={'Название товара'}
+            onChange={onChangeName}
+            textValid="Введите название товара"
+            isValid={!!productName}
+          />
           <InputText
             value={productPrice}
             placeholder={'Цена товара'}
