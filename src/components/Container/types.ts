@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
 export interface IContainerProps {
-  children: ReactNode | ReactNode[];
+  children: ReactNode[];
   flexColumn?: boolean;
 }

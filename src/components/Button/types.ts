@@ -1,5 +1,10 @@
 export interface IButtonProps {
-  appearance: string;
+  appearance: EButtonAppearance;
   value: string;
   onClick: () => void;
+}
+
+export enum EButtonAppearance {
+  primary = 'primary',
+  danger = 'danger',
 }

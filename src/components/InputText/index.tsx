@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { IInputTextProps } from './types';
 import bem from 'bem-cn';
+import { IInputTextProps } from './types';
 import './styles.scss';
 
 const InputText: FC<IInputTextProps> = ({ placeholder, value, onChange, isValid, textValid }) => {

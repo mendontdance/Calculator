@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { IContainerProps } from './types';
 import bem from 'bem-cn';
+import { IContainerProps } from './types';
 import './styles.scss';
 
 const Container: FC<IContainerProps> = ({ children, flexColumn }) => {

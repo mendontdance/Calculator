@@ -1,23 +1,30 @@
 import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import bem from 'bem-cn';
+import { useStore } from '../../services/rootStoreContext';
 import Button from '../Button';
 import InputText from '../InputText';
-import { IProductProps } from './types';
 import Text from '../Text';
+import { EButtonAppearance } from '../Button/types';
+import { IProductProps } from './types';
 import './styles.scss';
-import { useStore } from '../../services/rootStoreContext';
-import uuid from 'react-uuid';
 
 const Product: FC<IProductProps> = ({ name, id, price }) => {
   const classBem = bem('product');
-  const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [productName, setProductName] = useState<string>('');
-  const [productPrice, setProductPrice] = useState<string>('');
   const { productsStore } = useStore();
   const { deleteProduct, updateProduct } = productsStore;
 
+  const [isEdit, setIsEdit] = useState<boolean>(false);
+  const [productName, setProductName] = useState<string>('');
+  const [productPrice, setProductPrice] = useState<string>('');
   const isValid = productPrice && productName && Number(productPrice);
-  const priceValid = productPrice === '' || Number(productPrice);
+  const [isPriceValid, setIsPriceValid] = useState<boolean | undefined>(true);
+
+  const checkPrice = (value: string) => {
+    if (Number(value)) {
+      const numberValue = Number(value);
+      return numberValue.toFixed(2) >= value;
+    }
+  };
 
   const onClickEdit = () => {
     setIsEdit((prevState) => !prevState);
@@ -29,7 +36,7 @@ const Product: FC<IProductProps> = ({ name, id, price }) => {
   };
 
   const onClickSave = () => {
-    if (isValid) {
+    if (isValid && isPriceValid) {
       setIsEdit((prevState) => !prevState);
       updateProduct({ id: id, name: productName, price: productPrice });
     }
@@ -46,7 +53,11 @@ const Product: FC<IProductProps> = ({ name, id, price }) => {
   useEffect(() => {
     setProductName(name);
     setProductPrice(price);
-  }, [name, price]);
+  }, []);
+
+  useEffect(() => {
+    setIsPriceValid((Number(productPrice) && productPrice === '') || checkPrice(productPrice));
+  }, [onClickSave]);
 
   return (
     <div className={classBem()}>
@@ -54,8 +65,8 @@ const Product: FC<IProductProps> = ({ name, id, price }) => {
         <>
           <Text value={productName} />
           <Text value={`${Number(productPrice)} р.`} />
-          <Button appearance="primary" value="Редактировать" onClick={onClickEdit} />
-          <Button appearance="danger" value="Удалить" onClick={onClickDelete} />
+          <Button appearance={EButtonAppearance.primary} value="Редактировать" onClick={onClickEdit} />
+          <Button appearance={EButtonAppearance.danger} value="Удалить" onClick={onClickDelete} />
         </>
       ) : (
         <>
@@ -64,10 +75,10 @@ const Product: FC<IProductProps> = ({ name, id, price }) => {
             value={productPrice}
             placeholder={'Цена товара'}
             onChange={onChangePrice}
-            isValid={!!priceValid}
+            isValid={isPriceValid}
             textValid="Введите числовое значение"
           />
-          <Button appearance="primary" value="Сохранить" onClick={onClickSave} />
+          <Button appearance={EButtonAppearance.primary} value="Сохранить" onClick={onClickSave} />
         </>
       )}
     </div>
