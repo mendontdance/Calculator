@@ -56,8 +56,8 @@ const Product: FC<IProductProps> = ({ name, id, price }) => {
   }, []);
 
   useEffect(() => {
-    setIsPriceValid((Number(productPrice) && productPrice === '') || checkPrice(productPrice));
-  }, [onClickSave]);
+    setIsPriceValid((!!Number(productPrice) || productPrice === '') && checkPrice(productPrice));
+  }, [onChangePrice]);
 
   return (
     <div className={classBem()}>
