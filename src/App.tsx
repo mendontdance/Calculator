@@ -46,13 +46,7 @@ const App = observer(() => {
   return (
     <section className={classBem()}>
       <Container>
-        <InputText
-          placeholder={'Название товара'}
-          value={productName}
-          onChange={onChangeName}
-          textValid="Введите название товара"
-          isValid={!!nameValid}
-        />
+        <InputText placeholder={'Название товара'} value={productName} onChange={onChangeName} />
         <InputText
           placeholder={'Цена товара'}
           value={productPrice}
