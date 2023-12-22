@@ -1,0 +1,31 @@
+.product {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5px;
+  border-bottom: 1px solid #c4c3c3;
+
+  .button {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &:first-child {
+    padding-top: 10px;
+  }
+
+  &:last-child {
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+
+  .text:first-child {
+    min-width: 160px;
+    flex: auto;
+  }
+}

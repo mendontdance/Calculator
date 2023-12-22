@@ -1,0 +1,13 @@
+.text {
+  font-size: 18px;
+  color: #000;
+  min-width: 100px;
+  margin-right: 5px;
+  margin-left: 5px;
+
+  &_weight {
+    &_bold {
+      font-weight: 700;
+    }
+  }
+}

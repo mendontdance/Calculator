@@ -1,0 +1,20 @@
+.container {
+  box-sizing: border-box;
+  padding: 15px 20px;
+  width: 650px;
+  min-height: 70px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  margin-bottom: 15px;
+
+  &_flex-column {
+    flex-direction: column;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

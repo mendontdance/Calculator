@@ -1,0 +1,29 @@
+.button {
+  min-width: 80px;
+  min-height: 40px;
+  font: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  padding: 5px 15px;
+  box-shadow: rgba(139, 139, 139, 0.3) 0 1px 2px 0, rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  border-radius: 4px;
+
+  &_appearance {
+    &_primary {
+      background-color: #299F2E;
+      &:hover {
+        background-color: #17AA1E;
+      }
+    }
+
+    &_danger {
+      background-color: #c82831;
+      &:hover {
+        background-color: #e1414b;
+      }
+    }
+  }
+}
